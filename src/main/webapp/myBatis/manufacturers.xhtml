@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Manufacturers:</h2>
+    <ol>
+        <ui:repeat value="#{manufacturersMyBatis.allManufacturers}" var="manufacturer">
+            <li><h:link value="#{manufacturer.name}" outcome="buildings?manufacturerId=#{manufacturer.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:outputText value="Company name:"></h:outputText>
+        <h:inputText value="#{manufacturersMyBatis.manufacturerToCreate.name}" required="true" />
+        <h:commandButton value="Add a new manufaturer" action="#{manufacturersMyBatis.createManufacturer}" />
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

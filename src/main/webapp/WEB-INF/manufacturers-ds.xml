@@ -1,0 +1,10 @@
+<datasources>
+    <datasource jndi-name="ManDataSource" pool-name="ManDataSource">
+        <driver>h2</driver>
+        <connection-url>jdbc:h2:~/h2database/ManufacturerDB;AUTO_SERVER=TRUE</connection-url>
+        <security>
+            <user-name>one</user-name>
+            <password>one</password>
+        </security>
+    </datasource>
+</datasources>

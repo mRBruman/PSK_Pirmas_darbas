@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PSK Pirmas darbas:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>PSK Pirmas darbas</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="PSK_Pirmas_darbas-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="PSK Pirmas darbas:war exploded" />
+    </root>
+  </artifact>
+</component>
