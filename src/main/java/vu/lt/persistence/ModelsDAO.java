@@ -2,12 +2,14 @@ package vu.lt.persistence;
 
 import vu.lt.entities.Model;
 
+import javax.ejb.Stateful;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
+@Stateful
 public class ModelsDAO {
 
     @Inject

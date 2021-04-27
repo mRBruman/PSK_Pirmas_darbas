@@ -9,6 +9,7 @@ import vu.lt.persistence.ManufacturersDAO;
 import vu.lt.persistence.ModelsDAO;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import java.util.Map;
 @ViewScoped
 @Named
 @Getter @Setter
+@Stateful
 public class ModelDetails implements Serializable {
 
     private Model model;
