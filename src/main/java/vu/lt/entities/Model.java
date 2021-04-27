@@ -4,6 +4,7 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
@@ -28,9 +29,13 @@ public class Model {
     @Column(name = "TYPE")
     private String model;
 
-    @ManyToMany(mappedBy = "models", cascade = CascadeType.PERSIST)
-    Set<Manufacturer> manufacturers;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    private List<Manufacturer> manufacturers;
 
-
-
+    public void setManufacturers(List<Manufacturer> manufacturers) {
+        this.manufacturers = manufacturers;
+    }
 }

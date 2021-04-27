@@ -28,6 +28,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="ManufacturerPU" value="92067dda-f341-4f4a-a5cf-81d056720bd8" />
           <factory-entry name="MusicianPU" value="92067dda-f341-4f4a-a5cf-81d056720bd8" />
         </datasource-mapping>
         <naming-strategy-map />

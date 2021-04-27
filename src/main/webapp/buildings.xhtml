@@ -27,6 +27,21 @@
             <f:param name="manufacturerId" value="#{buildingsForManufacturer.manufacturer.id}" />
         </h:commandButton>
     </h:form>
+    <h2>Models of  #{buildingsForManufacturer.manufacturer.company_name}:</h2>
+    <ol>
+        <ui:repeat value="#{modelsForManufacturers.manufacturer.models}" var="model">
+            <li>
+                <h:link value="#{model.brand} (#{model.model})" outcome="models?modelId=#{model.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{modelsForManufacturers.modelToCreate.brand}" required="true" />
+        <h:inputText a:placeholder="name" value="#{modelsForManufacturers.modelToCreate.model}" required="true" />
+        <h:commandButton value="Add a model" action="#{modelsForManufacturers.createModel}" >
+            <f:param name="manufacturerId" value="#{modelsForManufacturers.manufacturer.id}" />
+        </h:commandButton>
+    </h:form>
     <h:link outcome="index" value="Back to manufacturer page"/>
 </h:body>
 </html>

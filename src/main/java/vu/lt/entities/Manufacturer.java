@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -30,10 +31,23 @@ public class Manufacturer {
     @OneToMany(mappedBy = "manufacturer")
     private List<Building> buildings = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "MANUFACTURER_MODELS",
-            joinColumns = @JoinColumn(name = "manufacturer_id"),
-            inverseJoinColumns = @JoinColumn(name = "model_id"))
-    List<Model> models;
+    @ManyToMany(mappedBy = "manufacturers")
+    private List<Model> models;
+
+    public void setModels(List<Model> models) {
+        this.models = models;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Manufacturer manufacturer = (Manufacturer) o;
+        return Objects.equals(id, manufacturer.id) &&
+                Objects.equals(company_name, manufacturer.company_name);
+    }
+    @Override
+    public int hashCode(){
+        return Objects.hash(id, company_name);
+    }
 }
