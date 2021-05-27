@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.mybatis.cdi.Transactional;
 import vu.lt.entities.Manufacturer;
 import vu.lt.entities.Model;
-import vu.lt.persistence.ManufacturersDAO;
+import vu.lt.persistence.IManufacturersDAO;
 import vu.lt.persistence.ModelsDAO;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +30,7 @@ public class ModelDetails implements Serializable {
     private ModelsDAO modelsDAO;
 
     @Inject
-    private ManufacturersDAO manufacturersDAO;
+    private IManufacturersDAO manufacturersDAO;
 
     @Getter @Setter
     private Integer manufacturerToAssignId = 0;

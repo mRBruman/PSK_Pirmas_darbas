@@ -13,7 +13,7 @@
     <interceptors>
         <class>vu.lt.interceptors.MethodLogger</class>
     </interceptors>
-    <!--    <decorators>-->
-    <!--        <class>vu.lt.decorators.PriceDecorator</class>-->
-    <!--    </decorators>-->
+<!--        <decorators>
+            <class>vu.lt.decorators.PriceDecorator</class>
+        </decorators>-->
 </beans>

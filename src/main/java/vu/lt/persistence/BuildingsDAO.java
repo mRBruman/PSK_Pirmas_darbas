@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
-public class BuildingsDAO {
+public class BuildingsDAO implements IBuildingsDAO{
 
     @Inject
     private EntityManager em;

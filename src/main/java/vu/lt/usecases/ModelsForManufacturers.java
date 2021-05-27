@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Manufacturer;
 import vu.lt.interceptors.LoggedInvocation;
-import vu.lt.persistence.ManufacturersDAO;
+import vu.lt.persistence.IManufacturersDAO;
 import vu.lt.persistence.ModelsDAO;
 
 import javax.annotation.PostConstruct;
@@ -21,7 +21,7 @@ public class ModelsForManufacturers {
     private ModelsDAO modelsDAO;
 
     @Inject
-    private ManufacturersDAO manufacturersDAO;
+    private IManufacturersDAO manufacturersDAO;
 
     @Getter @Setter
     private Manufacturer manufacturer;

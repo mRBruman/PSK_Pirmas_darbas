@@ -5,8 +5,8 @@ import lombok.Setter;
 import vu.lt.entities.Building;
 import vu.lt.entities.Manufacturer;
 import vu.lt.interceptors.LoggedInvocation;
-import vu.lt.persistence.BuildingsDAO;
-import vu.lt.persistence.ManufacturersDAO;
+import vu.lt.persistence.IBuildingsDAO;
+import vu.lt.persistence.IManufacturersDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -19,10 +19,10 @@ import java.util.Map;
 public class BuildingsForManufacturer {
 
     @Inject
-    private BuildingsDAO buildingsDAO;
+    private IBuildingsDAO buildingsDAO;
 
     @Inject
-    private ManufacturersDAO manufacturersDAO;
+    private IManufacturersDAO manufacturersDAO;
 
     @Getter @Setter
     private Manufacturer manufacturer;

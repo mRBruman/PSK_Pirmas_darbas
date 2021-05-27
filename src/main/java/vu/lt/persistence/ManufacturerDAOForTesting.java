@@ -22,7 +22,7 @@ public class ManufacturerDAOForTesting implements IManufacturersDAO{
     private List<Manufacturer> manufacturers = new ArrayList<>();
 
     @Inject
-    private IBuildingsDAO buildingsDAOforTesting;
+    private IBuildingsDAO buildingsDAOForTesting;
 
     public List<Manufacturer> loadAll(){
         if(!isFilled){
@@ -53,7 +53,7 @@ public class ManufacturerDAOForTesting implements IManufacturersDAO{
 
 
     private void fillList(){
-        List<Building> buildings = buildingsDAOforTesting.loadAll();
+        List<Building> buildings = buildingsDAOForTesting.loadAll();
 
         Manufacturer manufacturer = new Manufacturer();
         manufacturer.setId(1);
