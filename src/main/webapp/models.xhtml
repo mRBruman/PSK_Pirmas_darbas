@@ -16,7 +16,7 @@
     </ol>
     <h:form>
         <h:selectOneMenu value = "#{modelDetails.manufacturerToAssignId}">
-            <f:selectItems value="#{manufacturers.allManufacturers}" var="manufacturer" itemValue="#{manufacturer.id}" itemLabel="#{manufacturer.company_name}" />
+            <f:selectItems value="#{manufacturers.loadSome(modelDetails.model.manufacturers)}" var="manufacturer" itemValue="#{manufacturer.id}" itemLabel="#{manufacturer.company_name}" />
         </h:selectOneMenu>
         <h:commandButton value="Add manufacturer" action="#{modelDetails.assignToNewManufacturer}">
             <f:param name="modelId" value="#{modelDetails.model.id}"/>

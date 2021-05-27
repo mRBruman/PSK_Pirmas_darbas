@@ -27,10 +27,16 @@ public class Building implements Serializable {
     @Column(name = "BUILD_YEAR")
     private Integer build_year;
 
+    @Column(name = "PRICE")
+    private Integer price;
+
     @ManyToOne
     @JoinColumn(name="MANUFACTURER_ID")
     private Manufacturer manufacturer;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     public Building() {
     }

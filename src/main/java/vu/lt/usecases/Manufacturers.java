@@ -38,4 +38,12 @@ public class Manufacturers {
     private void loadAllManufacturers(){
         this.allManufacturers = manufacturersDAO.loadAll();
     }
+
+    public List<Manufacturer> loadSome(List<Manufacturer> manufacturers) {
+        List <Manufacturer> Temp = manufacturersDAO.loadAll();
+        //Temp.stream().filter(a -> manufacturers)
+        for( int i = 0; i < manufacturers.size(); i++){
+            Temp.remove(manufacturers.get(i));
+        }
+        return Temp;}
 }

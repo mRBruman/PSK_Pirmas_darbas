@@ -5,6 +5,7 @@ import lombok.Setter;
 import vu.lt.entities.Building;
 import vu.lt.interceptors.LoggedInvocation;
 import vu.lt.persistence.BuildingsDAO;
+import vu.lt.persistence.IBuildingsDAO;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -24,11 +25,10 @@ public class UpdateBuildingDetails implements Serializable {
     private Building building;
 
     @Inject
-    private BuildingsDAO buildingsDAO;
+    private IBuildingsDAO buildingsDAO;
 
     @PostConstruct
     private void init(){
-        System.out.println("UpdateBuildingDetails INIT CALLED");
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer buildingId = Integer.parseInt(requestParameters.get("buildingId"));
@@ -37,12 +37,11 @@ public class UpdateBuildingDetails implements Serializable {
 
 
     @Transactional
-    @LoggedInvocation
     public String updateBuildingBuildYear(){
         try{
             buildingsDAO.update(this.building);
         } catch (OptimisticLockException e){
-            return "/buildingDetails.xhtml?faces-redirect=true&buildingId=" + this.building.getId();
+            return "/buildingDetails.xhtml?faces-redirect=true&buildingId=" + this.building.getId() + "&error=optimistic-lock-exception";
         }
         return "buildings.xhtml?manufacturerId=" + this.building.getManufacturer().getId() + "&faces-redirect=true";
     }
