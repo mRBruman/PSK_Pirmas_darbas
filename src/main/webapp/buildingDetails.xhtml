@@ -8,9 +8,21 @@
 <h:head/>
 <h:body h2="#{updateBuildingDetails.building.address}">
     <h:form>
+        <p>
         <h:outputText value="Build year: "/>
         <h:inputText a:placeholder="enter the value" value="#{updateBuildingDetails.building.build_year}" required="true" />
+        <h:outputText value=" Price: "/>
+        <h:inputText a:placeholder="enter the value" value="#{updateBuildingDetails.building.price}" />
         <h:commandButton value="update" action="#{updateBuildingDetails.updateBuildingBuildYear()}">
+            <f:param name="buildingId" value="#{updateBuildingDetails.building.id}" />
+        </h:commandButton>
+            <h:outputText value="Building was edited by other user. Please try again"
+                          rendered="#{param['error'] == 'optimistic-lock-exception'}" escape="false" />
+        </p>
+        <h:outputText value="#{generatePrice.priceGeneratorStatus}" />
+        <h:commandButton value="Generate price"
+                         disabled="#{generatePrice.priceGeneratorRunning}"
+                         action="#{generatePrice.generateNewPrice()}">
             <f:param name="buildingId" value="#{updateBuildingDetails.building.id}" />
         </h:commandButton>
     </h:form>

@@ -16,6 +16,8 @@
         <h:outputText value="Company name:"></h:outputText>
         <h:inputText  value="#{manufacturers.manufacturerToCreate.company_name}" required="true" />
         <h:commandButton value="Add a new manufacturer" action="#{manufacturers.createManufacturer}" />
+        <h:outputText value="Manufacturer name is invalid. Name must be longer than 3 characters and without numbers"
+                      rendered="#{param['error'] == 'invalid-name'}" escape="false" />
     </h:form>
     <h:link outcome="myBatis/manufacturers" value="MyBatis implementation"/>
 </h:body>

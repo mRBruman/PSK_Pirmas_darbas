@@ -3,7 +3,8 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Manufacturer;
-import vu.lt.persistence.ManufacturersDAO;
+import vu.lt.persistence.IManufacturersDAO;
+import vu.lt.qualifiers.Base;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,8 +16,11 @@ import java.util.List;
 @Model
 public class Manufacturers {
 
+    @Inject @Base
+    private NameValidator nameValidator;
+
     @Inject
-    private ManufacturersDAO manufacturersDAO;
+    private IManufacturersDAO manufacturersDAO;
 
     @Getter @Setter
     private Manufacturer manufacturerToCreate = new Manufacturer();
@@ -31,11 +35,22 @@ public class Manufacturers {
 
     @Transactional
     public String createManufacturer(){
-        this.manufacturersDAO.persist(manufacturerToCreate);
+        if(nameValidator.isValidName(manufacturerToCreate.getCompany_name())) {
+            this.manufacturersDAO.persist(manufacturerToCreate);
+            return "index?faces-redirect=true";
+        }
         return "index?faces-redirect=true";
     }
 
     private void loadAllManufacturers(){
         this.allManufacturers = manufacturersDAO.loadAll();
     }
+
+    public List<Manufacturer> loadSome(List<Manufacturer> manufacturers) {
+        List <Manufacturer> Temp = manufacturersDAO.loadAll();
+        //Temp.stream().filter(a -> manufacturers)
+        for( int i = 0; i < manufacturers.size(); i++){
+            Temp.remove(manufacturers.get(i));
+        }
+        return Temp;}
 }
