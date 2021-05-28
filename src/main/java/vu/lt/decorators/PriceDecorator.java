@@ -18,7 +18,7 @@ public class PriceDecorator implements IRandomNumberGenerator {
 
     public Integer generatePrice() {
         Integer result = numberGenerator.generatePrice();
-        int valueToAdd = new Random().nextInt(1000) + 100;
+        int valueToAdd = new Random().nextInt(1000) + 1;
         return result + valueToAdd;
     }
 }

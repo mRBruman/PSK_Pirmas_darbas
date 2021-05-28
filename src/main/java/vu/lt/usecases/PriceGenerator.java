@@ -12,6 +12,6 @@ public class PriceGenerator implements Serializable, IRandomNumberGenerator {
         } catch (InterruptedException e){
             System.out.println("Interrupted");
         }
-        return new Random().nextInt(100) + 1;
+        return new Random().nextInt(1000000) + 250000;
     }
 }

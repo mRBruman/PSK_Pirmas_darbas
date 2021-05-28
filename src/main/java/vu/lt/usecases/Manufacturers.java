@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Manufacturer;
 import vu.lt.persistence.IManufacturersDAO;
-import vu.lt.qualifiers.Standard;
+import vu.lt.qualifiers.Base;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -16,8 +16,8 @@ import java.util.List;
 @Model
 public class Manufacturers {
 
-    @Inject @Standard
-    private ValidNameChecker validNameChecker;
+    @Inject @Base
+    private NameValidator nameValidator;
 
     @Inject
     private IManufacturersDAO manufacturersDAO;
@@ -35,7 +35,7 @@ public class Manufacturers {
 
     @Transactional
     public String createManufacturer(){
-        if(validNameChecker.isValidName(manufacturerToCreate.getCompany_name())) {
+        if(nameValidator.isValidName(manufacturerToCreate.getCompany_name())) {
             this.manufacturersDAO.persist(manufacturerToCreate);
             return "index?faces-redirect=true";
         }

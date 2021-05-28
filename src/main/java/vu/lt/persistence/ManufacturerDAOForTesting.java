@@ -2,8 +2,8 @@ package vu.lt.persistence;
 
 import vu.lt.entities.Manufacturer;
 import vu.lt.entities.Building;
-import vu.lt.qualifiers.Standard;
-import vu.lt.usecases.ValidNameChecker;
+import vu.lt.qualifiers.Base;
+import vu.lt.usecases.NameValidator;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
@@ -15,8 +15,8 @@ import java.util.List;
 @Alternative
 public class ManufacturerDAOForTesting implements IManufacturersDAO{
 
-    @Inject @Standard
-    private ValidNameChecker validNameChecker;
+    @Inject @Base
+    private NameValidator nameValidator;
 
     private boolean isFilled = false;
     private List<Manufacturer> manufacturers = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ManufacturerDAOForTesting implements IManufacturersDAO{
     }
 
     public void persist(Manufacturer manufacturer) {
-        if(validNameChecker.isValidName(manufacturer.getCompany_name()))
+        if(nameValidator.isValidName(manufacturer.getCompany_name()))
             manufacturers.add(manufacturer);
     }
 
